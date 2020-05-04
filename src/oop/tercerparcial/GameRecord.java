@@ -1,5 +1,7 @@
 package oop.tercerparcial;
 
+import java.util.Objects;
+
 public class GameRecord {
     private String playerName;
     private int score;
@@ -27,5 +29,27 @@ public class GameRecord {
 
     public int getScore() {
         return score;
+    }
+
+    @Override
+    public String toString() {
+        return "GameRecord{" +
+                "playerName='" + playerName + '\'' +
+                ", score=" + score +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameRecord that = (GameRecord) o;
+        return score == that.score &&
+                Objects.equals(playerName, that.playerName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(playerName, score);
     }
 }
